@@ -1,0 +1,4 @@
+{
+  "port": 4023,
+  "connString": "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\\Users\\tEm04ka\\AppData\\Roaming\\npm\\node_modules\\adodb\\test\\media\\Northwind2003.mdb"
+}
