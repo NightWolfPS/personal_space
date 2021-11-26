@@ -91,6 +91,7 @@
 	function Thread($id){
 		$out_post = '';
 		$out_comment = '';
+		$comments = R::getAll('SELECT * FROM comments WHERE reply_id = '.$id.' ORDER BY id DESC');
 		$result = R::findOne('public', 'id = ?', array($id));
 		if( $result ){
 			$author = R::findOne('users', 'id = ?', array($result->author));
@@ -100,7 +101,7 @@
 							<img src="../assets/default.jpg" alt="">
 						</div>
 						<a href="../profile/?id='.$author->id.'" tittle="'.$author->nickname.' '.$author->status.'"><div class="nickname '.$author->status.'">'.$author->nickname.'</div></a>
-						<a href="../threads/?id='.$result->id.'"><div class="info-inlines">1k ответов</div></a>
+						<a href="../threads/?id='.$result->id.'"><div class="info-inlines">'.count($comments).' ответов</div></a>
 						<div class="info-inlines">23k рейтинг</div>
 									
 					</div>
@@ -115,7 +116,7 @@
 					</div>
 				</div>';
 		}
-		$comments = R::getAll('SELECT * FROM comments WHERE reply_id = '.$id.' ORDER BY id DESC');
+		
 		if( $comments ){
 			for( $i = 0; $i <= count($comments)-1; $i++ ){
 				$author = R::findOne('users', 'id = ?', array($comments[$i]['author']));
@@ -150,13 +151,14 @@
 		if( $result ){
 			for( $i = 0; $i <= count($result)-1; $i++){
 				$author = R::findOne('users', 'id = ?', array($result[$i]['author']));
+				$comments = R::getAll('SELECT * FROM comments WHERE reply_id = '.$result[$i]['id'].' ORDER BY id DESC');
 				echo('<div class="post-card">
 					<div class="info-block">
 						<div class="avatar">
 							<img src="../assets/default.jpg" alt="">
 						</div>
 						<a href="../profile/?id='.$author->id.'" tittle="'.$author->nickname.' '.$author->status.'"><div class="nickname '.$author->status.'">'.$author->nickname.'</div></a>
-						<a href="../threads/?id='.$result[$i]['id'].'"><div class="info-inlines">1k ответов</div></a>
+						<a href="../threads/?id='.$result[$i]['id'].'"><div class="info-inlines">'.count($comments).' ответов</div></a>
 						<div class="info-inlines">23k рейтинг</div>
 									
 					</div>
