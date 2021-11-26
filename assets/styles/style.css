@@ -272,6 +272,11 @@ body{
 	color: #fff;
 }
 
+.l-side > .l-container{
+	position: fixed;
+
+}
+
 .ads-block{
 	position: relative;
 	display: flex;
@@ -318,6 +323,7 @@ body{
 	font: 400 18px 'PT Sans',sans-serif;
 	padding: 15px;
 	margin-bottom: 15px;
+	width: 205px;
 }
 
 .form-container{
@@ -335,6 +341,7 @@ body{
 	background: #171717;
 	border-radius: 10px;
 	border: none;
+	display: block;
 	text-align: center;
 	margin-bottom: 5px;
 	color: #fff;

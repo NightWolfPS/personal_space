@@ -52,6 +52,7 @@
 	<div class="content-wrapper">
 		<div class="content-container">
 			<div class="l-side">
+				<div class="l-container">
 				<?php if( isset($_SESSION['user']) ): ?>
 				<div class="menu-block">
 					<ul>
@@ -112,7 +113,7 @@
 							<div class="sub-menu">
 								<a href="../about">О проекте</a>
 								<!-- <a href="../ads">Реклама</a> -->
-								<a href="../blog">Блог</a>
+								<a href="../profile/?id=2">Блог</a>
 								<a href="../donut">Поддержать</a>
 							</div>
 						</div>
@@ -128,6 +129,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
 				<!-- <div class="auth-block">
 					<div class="title">Создай свой Personal_Space</div>

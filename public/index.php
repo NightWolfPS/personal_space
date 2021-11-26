@@ -36,6 +36,7 @@
 	<div class="content-wrapper">
 		<div class="content-container">
 			<div class="l-side">
+				<div class="l-container">
 				<?php if( isset($_SESSION['user']) ): ?>
 				<div class="menu-block">
 					<ul>
@@ -112,6 +113,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
 			</div>
 			<div class="main-block">

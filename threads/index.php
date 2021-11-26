@@ -1,5 +1,13 @@
 <?php
 	require_once "../server.php";
+	// $url = null;
+	// if( isset($_SESSION['user']) && !isset($url)){
+	// 	$url = $_SERVER['REQUEST_URI'].'&page=regist';
+	// 	header('Location: '.$url);
+	// 	exit;
+	// }else{
+
+	// }
 ?>
 
 <!DOCTYPE html>
@@ -48,6 +56,7 @@
 	<div class="content-wrapper">
 		<div class="content-container">
 			<div class="l-side">
+				<div class="l-container">
 				<?php if( isset($_SESSION['user']) ): ?>
 				<div class="menu-block">
 					<ul>
@@ -65,7 +74,7 @@
 					</ul>
 				</div>
 				<?php endif; ?>
-				<?php if( !isset($_SESSION['user']) && (isset($_GET['page']) && $_GET['page'] == 'regist') ): ?>
+				<?php if( !isset($_SESSION['user']) || (isset($_GET['page']) && $_GET['page'] == 'regist') ): ?>
 				<div class="auth-block">
 					<div class="title">Создай свой Personal_Space</div>
 					<?php if( $error != null ): ?>
@@ -83,7 +92,7 @@
 						</form>
 					</div>
 					<div class="auth-info">Нажимая кнопку “Создать” соглашаетесь с <a href="">политикой конфиденциальности</a> данного сайта</div>
-					<div class="auth-redir">Есть аккаунт? <a href="?page=login">Войдите!</a></div>
+					<div class="auth-redir">Есть аккаунт? <a href="../auth/?page=login">Войдите!</a></div>
 				</div>
 				<?php endif; ?>
 				<?php if( !isset($_SESSION['user']) && (isset($_GET['page']) && $_GET['page'] == 'login') ): ?>
@@ -108,7 +117,7 @@
 							<div class="sub-menu">
 								<a href="../about">О проекте</a>
 								<!-- <a href="../ads">Реклама</a> -->
-								<a href="../blog">Блог</a>
+								<a href="../profile/?id=2">Блог</a>
 								<a href="../donut">Поддержать</a>
 							</div>
 						</div>
@@ -124,6 +133,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
 				<!-- <div class="auth-block">
 					<div class="title">Создай свой Personal_Space</div>
@@ -153,6 +163,7 @@
 			</div>
 			<div class="main-block">
 				<?php echo(Thread($_GET['id'])); ?>
+				<?php if( isset($_SESSION['user'])): ?>
 				<div class="post-card">
 					<div class="info-block">
 						<div class="avatar">
@@ -214,6 +225,7 @@ var quill = new Quill('#editor', {
 						<div class="option  ">↓</div>
 					</div>
 				</div>
+			<?php endif; ?>
 			</div>
 		</div>
 	</div>	
