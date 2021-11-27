@@ -382,6 +382,7 @@ body{
 
 .menu-block{
 	background-color: #4A4A4A;
+	width:  205px;
 	border-radius: 10px;
 	font: 700 18px 'PT Sans',sans-serif;
 	padding: 15px;
