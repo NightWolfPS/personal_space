@@ -48,7 +48,7 @@
 				R::store($user);
 				$session = R::findOne('users', 'login = ?', array($login));
 				$_SESSION['user'] = $session;
-				header('../');
+				header('Location: ../index.php');
 			}
 		}
 	}
@@ -59,7 +59,7 @@
 		$session = R::findOne('users', 'login = ?', array($login));
 		if( password_verify($password, $session->password) ){
 			$_SESSION['user'] = $session;
-			header('../');
+			header('Location: ../index.php');
 		}else{
 			return false;
 		}

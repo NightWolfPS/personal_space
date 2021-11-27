@@ -1,7 +1,7 @@
 <?php
 	require_once "../server.php";
 	if( isset($_SESSION['user']) ){
-		header('Location: ../public');
+		header('Location: ../');
 		exit;
 	}
 ?>
@@ -36,6 +36,7 @@
 	<div class="content-wrapper">
 		<div class="content-container">
 			<div class="l-side">
+				<div class="l-container">
 				<?php if( isset($_SESSION['user']) ): ?>
 				<div class="menu-block">
 					<ul>
@@ -46,7 +47,10 @@
 							<li><a href="../moderation">Модерация</a></li>
 						<?php endif; ?>
 						<li><a href="../settings">Настройки</a></li>
-						<li><a href="../profile">Профиль</a></li>
+						<li><a href="../profile">Профиль <?php
+						$user = R::findOne('users', 'id = ?', array($_SESSION['user']['id']));
+						echo($user->nickname);
+					?></a></li>
 					</ul>
 				</div>
 				<?php endif; ?>
@@ -73,7 +77,7 @@
 				<?php endif; ?>
 				<?php if( !isset($_SESSION['user']) && (isset($_GET['page']) && $_GET['page'] == 'login') ): ?>
 				<div class="auth-block">
-					<div class="title">Твой Personal_Space</div>
+					<div class="title">Создай свой Personal_Space</div>
 					<div class="form-container">
 						<form action="" method='post'>
 							<input type="email" name="login" class="inputs" placeholder="Email">
@@ -93,7 +97,7 @@
 							<div class="sub-menu">
 								<a href="../about">О проекте</a>
 								<!-- <a href="../ads">Реклама</a> -->
-								<a href="../blog">Блог</a>
+								<a href="../profile/?id=2">Блог</a>
 								<a href="../donut">Поддержать</a>
 							</div>
 						</div>
@@ -109,6 +113,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
 				<!-- <div class="auth-block">
 					<div class="title">Создай свой Personal_Space</div>
@@ -137,45 +142,9 @@
 				</div> -->
 			</div>
 			<div class="main-block">
-				<div class="post-card">
-					<div class="info-block">
-						<div class="avatar">
-							<img src="../assets/default.jpg" alt="">
-						</div>
-						<a href=""><div class="nickname developer">tEm04ka</div></a>
-						<a href=""><div class="info-inlines">1k ответов</div></a>
-						<div class="info-inlines">23k рейтинг</div>
-					</div>
-					<div class="content-block">
-						<div class="datetime">01.01.1970 00:47</div>
-						<div class="content">Lorem ipsum, dolor sit amet consectetur, adipisicing elit. A earum facilis aspernatur voluptates quibusdam autem, repellat perspiciatis ea veniam, ad nostrum in quae dolore quas quaerat, saepe aliquam culpa voluptas.</div>
-					</div>
-					<div class="options-block">
-						<div class="option">･･･</div>
-						<div class="option ">↑</div>
-						<div class="option  ">↓</div>
-					</div>
-				</div>
-				<div class="post-card">
-					<div class="info-block">
-						<div class="avatar">
-							<img src="../assets/default.jpg" alt="">
-						</div>
-						<a href=""><div class="nickname developer">tEm04ka</div></a><br/>для <a href=""><div class="nickname developer">tEm04ka</div></a>
-						<a href=""><div class="info-inlines">1k ответов</div></a>
-						<div class="info-inlines">23k рейтинг</div>
-					</div>
-					<div class="content-block">
-						<div class="datetime">01.01.1970 00:47</div>
-						<div class="content">Lorem ipsum, dolor sit amet consectetur, adipisicing elit. A earum facilis aspernatur voluptates quibusdam autem, repellat perspiciatis ea veniam, ad nostrum in quae dolore quas quaerat, saepe aliquam culpa voluptas.</div>
-					</div>
-					<div class="options-block">
-						<div class="option">･･･</div>
-						<div class="option ">↑</div>
-						<div class="option  ">↓</div>
-					</div>
-				</div>
-				
+				<?php
+					UpdatePosts();
+				?>
 			</div>
 		</div>
 	</div>	
