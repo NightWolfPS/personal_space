@@ -1,7 +1,8 @@
 *{
 	margin: 0;
 	padding: 0;
-	font: 400 18px 'PT Sans',sans-serif;
+	/*font: 400 18px 'PT Sans',sans-serif;*/
+	font-family: 'PT Sans', sans-serif;
 }
 
 .post-card > form{
@@ -485,7 +486,7 @@ p > img {
 
 .content-block{
 	width:  100%;
-	font-size: 13px;
+	/*font-size: 13px;*/
 }
 
 .avatar > img{
